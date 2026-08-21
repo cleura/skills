@@ -21,9 +21,10 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.CLEURA_AI_API_KEY }}
           OPENAI_BASE_URL: https://ai.cleura.cloud/v1
-          MODEL: openai/qwen3.6-35b-a3b-fp8
+          MODEL: qwen3.6-35b-a3b-fp8
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          model: openai/qwen3.6-35b-a3b-fp8
+          model: qwen3.6-35b-a3b-fp8
           prompt: |
             Review this pull request using the `review` skill.
 

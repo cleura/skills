@@ -1,0 +1,59 @@
+---
+name: opencode-review
+
+'on':
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: anomalyco/opencode/github@latest
+        env:
+          OPENAI_API_KEY: ${{ secrets.CLEURA_AI_API_KEY }}
+          OPENAI_BASE_URL: https://ai.cleura.cloud/v1
+          MODEL: openai/qwen3.6-35b-a3b-fp8
+        with:
+          model: openai/qwen3.6-35b-a3b-fp8
+          prompt: |
+            Review this pull request using the `review` skill.
+
+            Examine each commit in the PR and assess:
+
+            1. Message accuracy — does the subject line accurately
+               describe the change? Is it specific, not vague? Does it
+               follow Conventional Commits format?
+            2. Rationale — does the commit message explain why the change
+               was made, not just what changed? Non-obvious changes
+               require justification.
+            3. Diff consistency — does the message match the actual diff?
+               Are claimed changes present? Are unmentioned changes
+               explained?
+            4. Conventional Commits compliance — correct type prefix
+               (feat, fix, perf, refactor, style, test, docs, ci, build)?
+
+            After evaluating all commits, post a PR comment with:
+
+            - A summary verdict table (commit, subject, accurate?,
+              rationale?, verdict)
+            - Per-commit details for any commits rated "Warning" or
+              "Fail"
+            - An overall assessment: X of Y commits pass, Z need attention
+
+            Verdict definitions:
+
+            - Pass — message is accurate, includes rationale, matches
+              the diff
+            - Warning — mostly accurate but missing rationale or has
+              minor inconsistencies
+            - Fail — misrepresents the change, no rationale for
+              non-trivial change, major inconsistencies

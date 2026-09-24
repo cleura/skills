@@ -43,6 +43,15 @@ The allowed types are:
 - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
 - test: Adding missing tests or correcting existing tests
 
+## Notes
+
+Every commit must contain one or more [notes](https://git-scm.com/docs/git-notes), using the `prompt` ref.
+This note must contain the verbatim prompt that was used to generate the commit.
+
+If multiple prompts were involved in generating a single commit, include them all.
+When amending a commit, add a new note in the `prompt` ref.
+When squashing or fixing up commits, add notes containing all prompts to the surviving commit.
+
 ## Commit Requirements
 
 - Always include `Assisted-by: <tool>/<model>` in the commit message
@@ -73,4 +82,14 @@ feat: Add dark mode toggle to settings page
 - Update styling for dark theme
 
 Assisted-by: opencode/qwen3-coder-30b
+```
+
+## Example Commit Notes
+
+```markdown
+Add a dark mode component.
+```
+
+```markdown
+Add a user-facing toggle to enable dark mode.
 ```

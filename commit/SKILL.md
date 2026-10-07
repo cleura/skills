@@ -52,6 +52,11 @@ If multiple prompts were involved in generating a single commit, include them al
 When amending a commit, add a new note in the `prompt` ref.
 When squashing or fixing up commits, add notes containing all prompts to the surviving commit.
 
+## External references
+
+If external references were consulted to create the commit, include a section named `References:` in the commit message.
+Add the URI of each external resource.
+
 ## Commit Requirements
 
 - Always include `Assisted-by: <tool>/<model>` in the commit message
@@ -80,6 +85,10 @@ feat: Add dark mode toggle to settings page
 - Implement dark mode component
 - Add theme context for state management
 - Update styling for dark theme
+
+References:
+https://accessibility.example.com/why-you-should-include-a-dark-mode-toggle
+https://css-reference.example.com/dark-mode-toggle
 
 Assisted-by: opencode/qwen3-coder-30b
 ```

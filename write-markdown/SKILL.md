@@ -33,14 +33,18 @@ This ensures all Markdown changes follow project conventions and style guideline
 
 ## Markdown Style Guide
 
-1. **Headings**: Use ATX headings (h1-h6) with `#` symbols instead of setext headings
-2. **Code blocks**: Use fenced code blocks with language identifiers
-3. **Lists**: Preserve existing bullet list markers; bullets MUST be followed by exactly 1 space
-4. **Sentences**: Write one sentence per line outside of code blocks
-5. **Formatting**: Follow the project's specific Markdown conventions
-6. **Whitespace**: A line MUST NOT end in trailing whitespace
-7. **End of file**: Every file MUST end with a newline character
-8. **Footnotes**: Preserve indentation of multi-line footnotes
+- **Headings**: Use ATX headings (h1-h6) with `#` symbols instead of setext headings
+- **Code blocks**: Use fenced code blocks with language identifiers
+- **Sentences**: Write one sentence per line outside of code blocks
+- **Lists**: Preserve existing bullet list markers; bullets MUST be followed by exactly 1 space
+- **List items**: Can contain one or more sentences.
+  When preceded by a brief list item title, that title must be separated from the other sentences *by `:`* (as seen in this list).
+  Do not use other separator characters.
+  If a list item contains multiple sentences, each must be on a separate line and indented accordingly.
+- **Formatting**: Follow the project's specific Markdown conventions
+- **Whitespace**: A line MUST NOT end in trailing whitespace
+- **End of file**: Every file MUST end with a newline character
+- **Footnotes**: Preserve indentation of multi-line footnotes
 
 ## Documentation Conventions
 

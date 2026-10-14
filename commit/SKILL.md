@@ -43,12 +43,24 @@ The allowed types are:
 - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
 - test: Adding missing tests or correcting existing tests
 
-## Notes
+## Prompt notes
 
 Every commit must contain one or more [notes](https://git-scm.com/docs/git-notes), using the `prompt` ref.
 This note must contain the verbatim prompt that was used to generate the commit.
 
-If multiple prompts were involved in generating a single commit, include them all.
+To add a prompt note to the most recent (`HEAD`) commit, run:
+
+```bash
+git notes --ref=prompt add -m "<prompt>"
+```
+
+To add a prompt note to a specific commit, run:
+
+```bash
+git notes --ref=prompt add -m "<prompt>" <commit-sha>
+```
+
+If multiple prompts were involved in generating a single commit, add one note for each of them.
 When amending a commit, add a new note in the `prompt` ref.
 When squashing or fixing up commits, add notes containing all prompts to the surviving commit.
 

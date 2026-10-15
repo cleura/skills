@@ -2,8 +2,8 @@
 name: commit
 description: >-
   Create Git commits following project conventions for commit messages, branch naming, and commit practices.
-  Use this skill when the user wants to create a commit or needs guidance on proper Git commit formatting, including conventional commit types, required metadata like Assisted-by, and project-specific requirements like topic branches and pre-commit hooks.
-  **IMPORTANT**: This skill MUST be consulted BEFORE attempting any Git commit operations.
+  This skill is mandatory for every Git commit operation.
+  **IMPORTANT**: You MUST consult this skill BEFORE attempting any Git commit operations.
 license: MIT
 compatibility: opencode
 metadata:
@@ -13,7 +13,7 @@ metadata:
 
 # Commit Skill
 
-This skill provides instructions for creating Git commits in this project according to the project's conventions.
+You MUST create Git commits in this project according to the conventions defined below.
 
 ## Requirement Keywords
 
@@ -21,40 +21,41 @@ The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", a
 Only uppercase usage carries these special meanings.
 Lowercase usage has its normal English meaning.
 
-## When to use this skill
+## Trigger
 
-Use this skill when:
-
-- Creating or amending Git commits
-- Needing guidance on proper commit message structure with type prefixes
-- Needing to understand Git hook requirements and commit validation practices
+You MUST activate this skill whenever you are creating or amending Git commits, or when you need to produce a commit message or configure Git hooks.
 
 ## Commit Message Format
 
-Commit message subjects MUST follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
+The commit message subject line MUST follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ```plain
 <type>[optional scope]: <description>
 ```
 
-Type and scope (optional) MUST be all-lowercase.
-The description MUST be in sentence case: if it starts with a letter, then that letter MUST be uppercase.
+- Type and scope (optional) MUST be all-lowercase.
+- The description MUST be in sentence case: if it starts with a letter, that letter MUST be uppercase.
+- Do not end the description with a period.
 
-The allowed types are:
+### Allowed Types
 
-- build: Changes that affect the build system or external dependencies
-- ci: Changes to our CI configuration files and scripts
-- docs: Documentation only changes
-- feat: A new feature
-- fix: A bug fix
-- perf: A code change that improves performance
-- refactor: A code change that neither fixes a bug nor adds a feature
-- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
-- test: Adding missing tests or correcting existing tests
+The type field MUST be one of the following:
 
-## Prompt notes
+- `build`: Changes that affect the build system or external dependencies
+- `ci`: Changes to CI configuration files and scripts
+- `docs`: Documentation-only changes
+- `feat`: A new feature
+- `fix`: A bug fix
+- `perf`: A code change that improves performance
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
+- `test`: Adding missing tests or correcting existing tests
 
-Every commit MUST contain one or more [notes](https://git-scm.com/docs/git-notes), using the `prompt` ref.
+No other type values are permitted.
+
+## Prompt Notes
+
+Every commit MUST contain one or more [notes](https://git-scm.com/docs/git-notes) using the `prompt` ref.
 This note MUST contain the verbatim prompt that was used to generate the commit.
 
 To add a prompt note to the most recent (`HEAD`) commit, run:
@@ -69,34 +70,45 @@ To add a prompt note to a specific commit, run:
 git notes --ref=prompt add -m "<prompt>" <commit-sha>
 ```
 
-If multiple prompts were involved in generating a single commit, add one note for each of them.
+If multiple prompts were involved in generating a single commit, add one note for each.
 When amending a commit, add a new note in the `prompt` ref.
-When squashing or fixing up commits, add notes containing all prompts to the surviving commit.
+When squashing or fixing up commits, include all prompts in the surviving commit.
 
-## External references
+## External References
 
-If external references were consulted to create the commit, include a section named `References:` in the commit message.
-Add the URI of each external resource.
+If you consulted external references to create the commit, you MUST include a `References:` section in the commit message body.
+List the URI of every external resource used.
 
-## Commit Requirements
+## Commit Message Body
 
-- Always include `Assisted-by: <tool>/<model>` in the commit message
-- Never include emoji in commit messages
-- All commits MUST be independently testable and correct
-- Series are always unsquashed; each commit MUST be independently testable and correct
-- Do not commit to the `master` or `main` branch directly
-- All modifications require a topic branch
-- Never amend commits you did not create
-- Never bypass Git hooks (in other words: never use the `--no-verify` option)
-- Use the `git config core.hooksPath .githooks` configuration to enable pre-commit and pre-push hooks
+The commit message body MUST:
 
-## Commit Process
+- Explain what and why, not how.
+- Use the imperative mood ("Add X", not "Added X" or "Adding X").
+- Start with a blank line after the subject.
+- Include `Assisted-by: <tool>/<model>` on its own line.
+- Include a `References:` section if external resources were consulted.
 
-0. If you're currently on `main` or `master`, create a suitably named topic branch and check it out
-1. Ensure your changes are staged with `git add`
-2. Create the commit with a descriptive message following the format above
-3. Verify your commit with `git log` to ensure it follows the conventions
-4. Never push any commit or a branch to a remote unless explicitly instructed to
+## Mandatory Commit Requirements
+
+- You MUST include `Assisted-by: <tool>/<model>` in the commit message.
+- You MUST NOT include emoji in commit messages.
+- All commits MUST be independently testable and correct.
+- Series are always unsquashed; each commit MUST be independently testable and correct.
+- You MUST NOT commit to the `master` or `main` branch directly.
+- All modifications require a topic branch.
+- You MUST NOT amend commits you did not create.
+- You MUST NOT bypass Git hooks (never use `--no-verify`).
+- You MUST run `git config core.hooksPath .githooks` to enable pre-commit and pre-push hooks.
+
+## Mandatory Commit Process
+
+0. If you are on `main` or `master`, create a suitably named topic branch and check it out.
+1. Stage your changes with `git add`.
+2. Create the commit with a subject and body following the format above.
+3. Add prompt notes to the `prompt` ref.
+4. Verify the commit with `git log` to ensure it follows all conventions.
+5. Do NOT push the commit or branch to a remote unless explicitly instructed.
 
 ## Example Commit Message
 
@@ -123,3 +135,17 @@ Add a dark mode component.
 ```markdown
 Add a user-facing toggle to enable dark mode.
 ```
+
+## Verification
+
+Before completing a commit, confirm:
+
+- The subject line matches `<type>[scope]: <description>` format exactly
+- The type is one of the allowed values listed above
+- The subject is all-lowercase type/scope with sentence-case description
+- The body explains what and why
+- `Assisted-by: <tool>/<model>` is present
+- `References:` section is present if external resources were consulted
+- A prompt note was added to the `prompt` ref
+- The commit was not made to `master` or `main`
+- The commit was not pushed to a remote

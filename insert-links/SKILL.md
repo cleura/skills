@@ -1,11 +1,9 @@
 ---
 name: insert-links
 description: >-
-  Edit text in markup languages that support hyperlinks by replacing mentions of key concepts, terms, and
-  persons with inline links to Wikipedia pages or other authoritative sources. Every link MUST be fetched
-  at insertion time to confirm it is available. Use this skill whenever the user asks to add links,
-  reference, cite, or annotate text.
-  **IMPORTANT**: This skill MUST be consulted BEFORE editing text for link insertion.
+  Insert inline links into text while preserving the semantic context and structure of the markup language being processed.
+  This skill is mandatory for every request to add links, references, citations, or annotations to text.
+  **IMPORTANT**: You MUST consult this skill BEFORE editing text for link insertion.
 license: MIT
 compatibility: opencode
 metadata:
@@ -15,7 +13,7 @@ metadata:
 
 # Insert Links Skill
 
-This skill provides instructions for inserting inline links into text while preserving the semantic context and structure of the markup language being processed.
+You MUST insert inline links into text while preserving the semantic context and structure of the markup language being processed.
 
 ## Requirement Keywords
 
@@ -23,87 +21,71 @@ The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", a
 Only uppercase usage carries these special meanings.
 Lowercase usage has its normal English meaning.
 
-## When to use this skill
+## Trigger
 
-Use this skill when:
+You MUST activate this skill whenever the user asks you to add links, references, citations, or annotations to text, or when you are editing any markup language that supports hyperlinks (Markdown, HTML, reStructuredText, AsciiDoc, etc.).
 
-- The user asks to add links, references, citations, or annotations to text
-- The user wants to link key concepts, terms, or persons to external sources
-- Editing any markup language that supports hyperlinks (Markdown, HTML, reStructuredText, AsciiDoc, etc.)
+## Mandatory Steps
 
-## Core Instructions
+Follow these steps in order:
 
-When editing text:
+1. **Identify linkable content**: Scan the text for key concepts, technical terms, named persons, organizations, places, events, and established ideas that would benefit from external reference.
 
-1. **Identify linkable content**: Look for mentions of key concepts, technical terms, named persons, organizations, places, events, and established ideas that would benefit from external reference.
+2. **Choose a source**: Select the most specific and authoritative source available.
+   Use the following priority order:
+   - For established general-knowledge topics: Wikipedia
+   - For technical terms: official documentation or specification pages
+   - For persons: Wikipedia (if the person is notable)
+   - For organizations, institutions, or events: the most authoritative available source
+   - For events: a government, academic, or major news source
 
-2. **Choose authoritative sources**: Prefer Wikipedia pages for general knowledge topics.
-   Use other authoritative sources (official documentation, academic institutions, government publications, reputable news organizations) when they are more appropriate or reliable.
-
-3. **Fetch every link before inserting**: Before adding any link, fetch the target URL to confirm it is accessible and returns a valid response.
+3. **Fetch the URL**: Use the fetch tool to retrieve the target URL.
+   Confirm the response returns a successful HTTP status code (2xx) and the content loads correctly.
+   If the fetch fails, try an alternative source.
+   If no valid source exists, do not insert a link.
    Never insert a link that has not been verified.
 
-4. **Replace text with inline links**: Convert the mentioned concept, term, or person into an inline link using the markup language's link syntax (e.g., `[text](url)` in Markdown, `<a href="url">text</a>` in HTML).
+4. **Insert the link**: Replace the concept, term, or person with an inline link using the markup language's link syntax.
+   Examples:
 
-5. **Preserve markup context**: Keep all existing markup intact.
-   Do not alter formatting, structure, code blocks, or other elements beyond adding the link.
+   ```markdown
+   [Python](https://www.python.org/) is a programming language.
+   ```
 
-## Link Selection Guidelines
+   ```html
+   <a href="https://www.python.org/">Python</a> is a programming language.
+   ```
 
-- Prefer the most specific and relevant Wikipedia article over a generic one
-- When a concept has a well-known Wikipedia page, use it
-- For technical terms, official documentation or specification pages may be more appropriate
-- For persons, use their Wikipedia page if available and notable
-- For organizations, institutions, or events, use the most authoritative available source
-- Do not link common words or phrases that lack encyclopedic significance
+   ```rst
+   :doc:`Python <python>` is a programming language.
+   ```
 
-## Fetch Verification
+5. **Verify markup integrity**: Confirm that no existing markup syntax, formatting, structure, code blocks, or other elements were altered beyond adding the link.
 
-For every link to be inserted:
+## What NOT to Link
 
-1. Use the fetch tool to retrieve the target URL
-2. Confirm the response is a successful HTTP status code (2xx)
-3. Confirm the content loads correctly
-4. Only insert the link after successful verification
-5. If a link fails to fetch, try an alternative source or omit the link rather than leaving a broken reference
+- Common words or phrases that lack encyclopedic significance
+- Links you cannot fetch and verify
+- Links that point to generic pages when a more specific page exists
 
 ## Markup Preservation
 
-When editing text inside markup:
+You MUST NOT alter markup syntax when editing text.
+Keep all tags, attributes, formatting markers, and structure intact.
+Only edit the human-readable text content between or within markup elements.
 
-- **Do not alter** markup syntax: keep all tags, attributes, formatting markers, and structure intact
-- **Only edit** the human-readable text content between or within markup elements
-- **Preserve** all semantic meaning: existing links, references, code, lists, tables, and other structured elements MUST remain functionally identical
-- **Keep** code blocks, inline code, and other literal content untouched
-- **Maintain** document structure: headings, sections, and hierarchy MUST NOT change
-- **Retain** all special characters, escape sequences, and formatting required by the markup language
+You MUST preserve all semantic meaning: existing links, references, code, lists, tables, and other structured elements MUST remain functionally identical.
+You MUST NOT change code blocks, inline code, or other literal content.
+You MUST NOT change document structure: headings, sections, and hierarchy.
+You MUST retain all special characters, escape sequences, and formatting required by the markup language.
 
-## Link Format Examples
+## Verification
 
-Markdown:
-
-```markdown
-[Python](https://www.python.org/) is a programming language.
-```
-
-HTML:
-
-```html
-<a href="https://www.python.org/">Python</a> is a programming language.
-```
-
-reStructuredText:
-
-```rst
-:doc:`Python <python>` is a programming language.
-```
-
-## Quality Checks
-
-Before completing link insertion:
+Before returning the edited text, confirm:
 
 - Every inserted link has been fetched and verified as accessible
 - Link text accurately describes the target page
 - No existing links or content have been broken
 - The markup remains valid after insertion
+- Link choices follow the source priority order above
 - Link choices are consistent with the document's tone and audience

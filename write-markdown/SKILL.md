@@ -2,8 +2,8 @@
 name: write-markdown
 description: >-
   Create or modify Markdown documentation in this project following the project's style guide and conventions.
-  Use this skill when the user needs to write or update documentation, ensuring adherence to project standards for Markdown formatting, structure, and content.
-  **IMPORTANT**: This skill MUST be consulted BEFORE making any modifications to Markdown files (including, but not limited to, all files whose name ends in .md).
+  This skill is mandatory for all Markdown file operations.
+  **IMPORTANT**: You MUST consult this skill BEFORE making any modifications to Markdown files (including, but not limited to, all files whose name ends in .md).
 license: MIT
 compatibility: opencode
 metadata:
@@ -13,7 +13,7 @@ metadata:
 
 # Write Markdown Skill
 
-This skill provides instructions for creating or modifying Markdown documentation in this project according to the project's conventions.
+You MUST create or modify Markdown documentation in this project according to the conventions defined below.
 
 ## Requirement Keywords
 
@@ -21,59 +21,76 @@ The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", a
 Only uppercase usage carries these special meanings.
 Lowercase usage has its normal English meaning.
 
-## When to use this skill
+## Trigger
 
-Use this skill when:
+You MUST activate this skill whenever you are creating new Markdown documentation files, modifying existing Markdown documentation, or writing documentation for code, features, or processes.
 
-- Creating new Markdown documentation files
-- Modifying existing Markdown documentation
-- Needing guidance on proper Markdown formatting and structure
-- Wanting to ensure documentation follows project style guidelines
-- Writing documentation for code, features, or processes
+## Mandatory Style Rules
 
-## Before modifying Markdown files
+Apply these rules to every Markdown file you create or modify:
 
-**CRITICAL**: ALWAYS consult this skill BEFORE making any modifications to Markdown files.
+### Headings
 
-This ensures all Markdown changes follow project conventions and style guidelines.
+- Use ATX headings (`#` symbols) only.
+- Do not use setext headings (underlined with `===` or `---`).
+- Use `#` for the main title, `##` for sections, `###` for subsections, and so on.
 
-## Markdown Style Guide
+### Code Blocks
 
-- **Headings**: Use ATX headings (h1-h6) with `#` symbols instead of setext headings
-- **Code blocks**: Use fenced code blocks with language identifiers
-- **Sentences**: Write one sentence per line outside of code blocks
-- **Lists**: Preserve existing bullet list markers; bullets MUST be followed by exactly 1 space
-- **List items**: Can contain one or more sentences.
-  When preceded by a brief list item title, that title MUST be separated from the other sentences *by `:`* (as seen in this list).
-  Do not use other separator characters.
-  If a list item contains multiple sentences, each MUST be on a separate line and indented accordingly.
-- **Formatting**: Follow the project's specific Markdown conventions
-- **Whitespace**: A line MUST NOT end in trailing whitespace
-- **End of file**: Every file MUST end with a newline character
-- **Footnotes**: Preserve indentation of multi-line footnotes
+- Use fenced code blocks with language identifiers only.
+- Do not use indented code blocks.
 
-## Documentation Conventions
+### Sentences
 
-- All documentation SHOULD follow the project's existing structure and tone
-- Use the appropriate heading levels (`#` for main titles, `##` for sections, etc.)
-- Include language identifiers in all fenced code blocks
-- Sentences MUST NOT break across lines
-- Lines MUST NOT contain more than one sentence
-- Ensure all links are properly formatted and functional
-- Use consistent terminology with existing documentation
+- Write one sentence per line outside of code blocks.
+- Sentences MUST NOT break across lines.
+- Lines MUST NOT contain more than one sentence.
 
-## File Structure and Organization
+### Lists
 
-- Documentation files SHOULD be placed in appropriate directories following the project structure
-- Maintain consistency with existing documentation patterns
-- Use descriptive file names that reflect the content
-- Follow the same organizational principles as other documentation in the project
+- Preserve existing bullet list markers; bullets MUST be followed by exactly 1 space.
+- List items can contain one or more sentences.
+- When a list item is preceded by a brief title, separate the title from the rest *by `:`* (e.g., `Item title: This is the detail`).
+- If a list item contains multiple sentences, each MUST be on a separate line and indented accordingly.
+- Do not use other separator characters between the title and detail.
 
-## Content Standards
+### Whitespace
 
-- Be clear, concise, and accurate
-- Use active voice when possible
-- Include relevant examples and code snippets
-- Reference existing documentation where appropriate
-- Keep technical documentation up-to-date with code changes
-- Ensure all commands and examples are tested and working
+- A line MUST NOT end in trailing whitespace.
+
+### File Ending
+
+- Every file MUST end with a newline character.
+
+### Footnotes
+
+- Preserve indentation of multi-line footnotes.
+
+## Mandatory Content Requirements
+
+- All documentation MUST follow the project's existing structure and tone.
+- Use consistent terminology with existing documentation.
+- All links MUST be properly formatted and functional.
+- All commands and examples MUST be tested and working.
+- Technical documentation MUST be kept up-to-date with code changes.
+
+## What to Write
+
+- Clear, concise, accurate prose.
+- Active voice (not passive).
+- Relevant examples and code snippets.
+- References to existing documentation where appropriate.
+
+## Verification
+
+Before returning a Markdown file, confirm:
+
+- All headings are ATX style with correct hierarchy
+- All code blocks have language identifiers
+- One sentence per line (outside code blocks)
+- List markers follow the exact-1-space rule
+- No trailing whitespace on any line
+- The file ends with a newline
+- Footnotes preserve indentation
+- All links are functional
+- The document structure matches project conventions

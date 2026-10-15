@@ -2,8 +2,8 @@
 name: six-rules
 description: >-
   Edit text following the Remedy of Six Rules, preserving all semantic context of the markup language being processed.
-  Use this skill whenever the user asks to edit, revise, simplify, or improve writing in any markup language (Markdown, HTML, reStructuredText, etc.).
-  **IMPORTANT**: This skill MUST be consulted BEFORE editing any text content.
+  This skill is mandatory for every text-editing task.
+  **IMPORTANT**: You MUST apply all six rules to every piece of text you edit.
 license: MIT
 compatibility: opencode
 metadata:
@@ -13,7 +13,7 @@ metadata:
 
 # Apply the Remedy of Six Rules
 
-This skill provides instructions for editing text to be clear, direct, and plain, while fully preserving the semantic context and structure of whatever markup language is being processed.
+You MUST edit all text to be clear, direct, and plain while fully preserving the semantic context and structure of whatever markup language is being processed.
 
 ## Requirement Keywords
 
@@ -21,18 +21,14 @@ The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", a
 Only uppercase usage carries these special meanings.
 Lowercase usage has its normal English meaning.
 
-## When to use this skill
+## Trigger
 
-Use this skill when:
-
-- The user asks to edit, revise, simplify, or improve writing
-- The user wants text to be more concise or plain-spoken
-- Writing in any markup language (Markdown, HTML, reStructuredText, AsciiDoc, etc.)
+You MUST activate this skill whenever the user asks you to edit, revise, simplify, or improve writing in any markup language (Markdown, HTML, reStructuredText, AsciiDoc, etc.).
 
 ## The Six Rules
 
-These rules are drawn from George Orwell's essay "Politics and the English Language" (1946).
-Apply them to all text editing:
+These rules come from George Orwell's essay "Politics and the English Language" (1946).
+Apply them to every piece of text you edit:
 
 1. Never use a metaphor, simile, or other figure of speech which you are used to seeing in print.
 2. Never use a long word where a short one will do.
@@ -41,22 +37,51 @@ Apply them to all text editing:
 5. Never use a foreign phrase, a scientific word, or a jargon word if you can think of an everyday English equivalent.
 6. Break any of these rules sooner than say anything outright barbarous.
 
+Rule 6 overrides all others when a conflict arises.
+
 ## Markup Preservation
 
-When editing text inside markup:
+You MUST NOT alter markup syntax when editing text.
+Keep all tags, attributes, formatting markers, and structure intact.
+Only edit the human-readable text content between or within markup elements.
 
-- **Do not alter** markup syntax: keep all tags, attributes, formatting markers, and structure intact
-- **Only edit** the human-readable text content between or within markup elements
-- **Preserve** all semantic meaning: links, references, code, lists, tables, and other structured elements MUST remain functionally identical
-- **Keep** code blocks, inline code, and other literal content untouched
-- **Maintain** document structure: headings, sections, and hierarchy MUST NOT change
-- **Retain** all special characters, escape sequences, and formatting required by the markup language
+You MUST preserve all semantic meaning: links, references, code, lists, tables, and other structured elements MUST remain functionally identical.
+You MUST NOT change code blocks, inline code, or other literal content.
+You MUST NOT change document structure: headings, sections, and hierarchy.
+You MUST retain all special characters, escape sequences, and formatting required by the markup language.
 
-## Editing Principles
+## Mandatory Editing Steps
 
-- Prefer short, direct sentences
-- Use active voice wherever possible
-- Replace verbose phrases with simpler alternatives
-- Remove filler words and redundant expressions
-- Choose familiar words over obscure or technical ones
-- Never sacrifice clarity or introduce awkwardness just to follow a rule -- rule six overrides all others
+1. Read the entire piece of text before making any changes.
+2. Apply all six rules to every sentence.
+3. Remove every word that does not carry meaning.
+4. Convert every passive construction you can into active voice.
+5. Replace every jargon, foreign phrase, and obscure term with its everyday English equivalent.
+6. Verify that the edited text preserves the original meaning.
+7. Verify that no markup syntax was altered.
+
+## What to Remove
+
+- Metaphors and similes that are clichéd
+- Any word that can be cut without losing meaning
+- Passive voice constructions
+- Jargon, scientific terminology, and foreign phrases
+- Filler words and redundant expressions
+
+## What to Use Instead
+
+- Short, direct sentences
+- Active voice
+- Familiar, everyday English words
+- Simple alternatives to complex terms
+
+## Verification
+
+Before returning edited text, confirm:
+
+- Every sentence uses active voice unless passive is the only clear option
+- No clichéd metaphors or similes remain
+- Every word carries meaning; no filler words exist
+- No jargon, foreign phrases, or obscure terms are used
+- Markup syntax is unchanged
+- The original meaning is fully preserved

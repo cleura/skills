@@ -37,6 +37,9 @@ Commit message subjects MUST follow the [Conventional Commits](https://www.conve
 <type>[optional scope]: <description>
 ```
 
+Type and scope (optional) MUST be all-lowercase.
+The description MUST be in sentence case: if it starts with a letter, then that letter MUST be uppercase.
+
 The allowed types are:
 
 - build: Changes that affect the build system or external dependencies

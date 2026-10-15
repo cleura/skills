@@ -15,6 +15,12 @@ metadata:
 
 This skill provides instructions for creating or modifying Markdown documentation in this project according to the project's conventions.
 
+## Requirement Keywords
+
+The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 ([RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119) and [RFC 8174](https://datatracker.ietf.org/doc/html/rfc8174)).
+Only uppercase usage carries these special meanings.
+Lowercase usage has its normal English meaning.
+
 ## When to use this skill
 
 Use this skill when:
@@ -38,9 +44,9 @@ This ensures all Markdown changes follow project conventions and style guideline
 - **Sentences**: Write one sentence per line outside of code blocks
 - **Lists**: Preserve existing bullet list markers; bullets MUST be followed by exactly 1 space
 - **List items**: Can contain one or more sentences.
-  When preceded by a brief list item title, that title must be separated from the other sentences *by `:`* (as seen in this list).
+  When preceded by a brief list item title, that title MUST be separated from the other sentences *by `:`* (as seen in this list).
   Do not use other separator characters.
-  If a list item contains multiple sentences, each must be on a separate line and indented accordingly.
+  If a list item contains multiple sentences, each MUST be on a separate line and indented accordingly.
 - **Formatting**: Follow the project's specific Markdown conventions
 - **Whitespace**: A line MUST NOT end in trailing whitespace
 - **End of file**: Every file MUST end with a newline character
@@ -48,7 +54,7 @@ This ensures all Markdown changes follow project conventions and style guideline
 
 ## Documentation Conventions
 
-- All documentation should follow the project's existing structure and tone
+- All documentation SHOULD follow the project's existing structure and tone
 - Use the appropriate heading levels (`#` for main titles, `##` for sections, etc.)
 - Include language identifiers in all fenced code blocks
 - Sentences MUST NOT break across lines
@@ -58,7 +64,7 @@ This ensures all Markdown changes follow project conventions and style guideline
 
 ## File Structure and Organization
 
-- Documentation files should be placed in appropriate directories following the project structure
+- Documentation files SHOULD be placed in appropriate directories following the project structure
 - Maintain consistency with existing documentation patterns
 - Use descriptive file names that reflect the content
 - Follow the same organizational principles as other documentation in the project

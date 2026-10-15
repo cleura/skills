@@ -15,6 +15,12 @@ metadata:
 
 This skill provides instructions for creating Git commits in this project according to the project's conventions.
 
+## Requirement Keywords
+
+The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 ([RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119) and [RFC 8174](https://datatracker.ietf.org/doc/html/rfc8174)).
+Only uppercase usage carries these special meanings.
+Lowercase usage has its normal English meaning.
+
 ## When to use this skill
 
 Use this skill when:
@@ -25,7 +31,7 @@ Use this skill when:
 
 ## Commit Message Format
 
-Commit message subjects must follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
+Commit message subjects MUST follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ```plain
 <type>[optional scope]: <description>
@@ -45,8 +51,8 @@ The allowed types are:
 
 ## Prompt notes
 
-Every commit must contain one or more [notes](https://git-scm.com/docs/git-notes), using the `prompt` ref.
-This note must contain the verbatim prompt that was used to generate the commit.
+Every commit MUST contain one or more [notes](https://git-scm.com/docs/git-notes), using the `prompt` ref.
+This note MUST contain the verbatim prompt that was used to generate the commit.
 
 To add a prompt note to the most recent (`HEAD`) commit, run:
 
@@ -73,8 +79,8 @@ Add the URI of each external resource.
 
 - Always include `Assisted-by: <tool>/<model>` in the commit message
 - Never include emoji in commit messages
-- All commits must be independently testable and correct
-- Series are always unsquashed; each commit must be independently testable and correct
+- All commits MUST be independently testable and correct
+- Series are always unsquashed; each commit MUST be independently testable and correct
 - Do not commit to the `master` or `main` branch directly
 - All modifications require a topic branch
 - Never amend commits you did not create

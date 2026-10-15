@@ -2,7 +2,7 @@
 name: insert-links
 description: >-
   Edit text in markup languages that support hyperlinks by replacing mentions of key concepts, terms, and
-  persons with inline links to Wikipedia pages or other authoritative sources. Every link must be fetched
+  persons with inline links to Wikipedia pages or other authoritative sources. Every link MUST be fetched
   at insertion time to confirm it is available. Use this skill whenever the user asks to add links,
   reference, cite, or annotate text.
   **IMPORTANT**: This skill MUST be consulted BEFORE editing text for link insertion.
@@ -16,6 +16,12 @@ metadata:
 # Insert Links Skill
 
 This skill provides instructions for inserting inline links into text while preserving the semantic context and structure of the markup language being processed.
+
+## Requirement Keywords
+
+The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 ([RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119) and [RFC 8174](https://datatracker.ietf.org/doc/html/rfc8174)).
+Only uppercase usage carries these special meanings.
+Lowercase usage has its normal English meaning.
 
 ## When to use this skill
 
@@ -67,9 +73,9 @@ When editing text inside markup:
 
 - **Do not alter** markup syntax: keep all tags, attributes, formatting markers, and structure intact
 - **Only edit** the human-readable text content between or within markup elements
-- **Preserve** all semantic meaning: existing links, references, code, lists, tables, and other structured elements must remain functionally identical
+- **Preserve** all semantic meaning: existing links, references, code, lists, tables, and other structured elements MUST remain functionally identical
 - **Keep** code blocks, inline code, and other literal content untouched
-- **Maintain** document structure: headings, sections, and hierarchy must not change
+- **Maintain** document structure: headings, sections, and hierarchy MUST NOT change
 - **Retain** all special characters, escape sequences, and formatting required by the markup language
 
 ## Link Format Examples

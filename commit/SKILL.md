@@ -70,9 +70,9 @@ To add a prompt note to a specific commit, run:
 git notes --ref=prompt add -m "<prompt>" <commit-sha>
 ```
 
-If multiple prompts were involved in generating a single commit, add one note for each.
-When amending a commit, add a new note in the `prompt` ref.
-When squashing or fixing up commits, include all prompts in the surviving commit.
+If multiple prompts were involved in generating a single commit, include all of them in the prompt note.
+When amending a commit, append to the commit's prompt note.
+When squashing or fixing up commits, include all prompts in the surviving commit's prompt note.
 
 ## External References
 

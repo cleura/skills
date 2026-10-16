@@ -32,6 +32,8 @@ You MUST activate this skill whenever the user asks you to translate content int
 3. When the user refers to a language by code (e.g., `en`, `ja`, `zh-CN`), resolve it to the full language name before proceeding.
 4. If the target language cannot be determined, you MUST ask the user to specify one before proceeding.
 
+If the target language features a T-V distinction, you MUST ask the user whether the translation should use the familiar (informal) or the polite (formal) form of addressing the reader.
+
 ## Source File Protection
 
 You MUST NOT overwrite, modify, delete, or otherwise alter any source language file.

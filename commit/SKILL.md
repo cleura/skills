@@ -88,11 +88,18 @@ The commit message body MUST:
 - Start with a blank line after the subject.
 - Include `Assisted-by: <tool>/<model>` on its own line.
 - Include a `References:` section if external resources were consulted.
+- Use plain text only.
+  (`*` or `-`, used to prefix list items, qualify as acceptable plain text.)
+
+The commit message body MUST NOT:
+
+- Use Markdown formatting.
 
 ## Mandatory Commit Requirements
 
 - You MUST include `Assisted-by: <tool>/<model>` in the commit message.
 - You MUST NOT include emoji in commit messages.
+- You MUST NOT include Markdown in commit messages.
 - All commits MUST be independently testable and correct.
 - Series are always unsquashed; each commit MUST be independently testable and correct.
 - You MUST NOT commit to the `master` or `main` branch directly.

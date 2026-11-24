@@ -25,6 +25,18 @@ Lowercase usage has its normal English meaning.
 
 You MUST activate this skill whenever you are creating or amending Git commits, or when you need to produce a commit message or configure Git hooks.
 
+## Pre-Check
+
+Before creating or amending any commit, you MUST inspect the recent commit history to identify user-created commits made since you began working.
+
+You MUST NOT amend, reset, or rebase any user-created commit.
+
+You MUST NOT create a commit that reverts user-created work unless the user has explicitly asked for it.
+
+If a user-created commit touches the same files or code paths as your pending changes, or makes them stale or incorrect, you MUST ask the user how to proceed before you commit.
+
+You MUST adapt your own pending changes to the user's commits, never the reverse.
+
 ## Commit Message Format
 
 The commit message subject line MUST follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
